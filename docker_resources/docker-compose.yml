@@ -5,4 +5,16 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nignx.conf
+      - ./nginx/conf/nginx.conf:/etc/nignx.conf
+      - ./nginx/server:/usr/share/nginx/html
+      - ./nginx/logs:/var/log/nginx
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+    # Change the default password to whatever you want
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
