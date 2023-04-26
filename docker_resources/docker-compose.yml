@@ -2,6 +2,7 @@ version: '3.0'
 services:
   nginx:
     image: nginx
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -18,3 +19,15 @@ services:
       - "5432:5432"
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+    # Change the default user and password to whatever you want
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo/dbs:/data/db
+      - ./mongo/logs:/var/log/mongodb
