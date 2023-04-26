@@ -1,3 +1,4 @@
-docker_resources/postgres/data/*
-nginx/conf/*
-nginx/logs/*
+docker_resources/postgres/*
+docker_resources/nginx/conf
+docker_resources/nginx/logs
+docker_resources/mongo/*
