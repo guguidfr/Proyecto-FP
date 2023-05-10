@@ -1,15 +1,16 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "server"
-  # config.ssh.insert_key = true
   config.ssh.keys_only = true
   config.vm.define "awx" do |awx|
     awx.vm.box = "debian/bullseye64"
     awx.vm.hostname = "dockers-server"
-    awx.vm.synced_folder "./docker_resources", "/home/vagrant/resources/docker"
+    awx.vm.synced_folder "./docker_resources", "/contaniers/info"
     awx.vm.provision "file", source: "./boot/host_public_key", destination: "/home/vagrant/host_key"
     # awx.vm.network :"public_network"
     awx.vm.network :"private_network" , ip: "100.10.0.10", netmask: "255.255.255.0"
     awx.vm.network "forwarded_port", guest: 80, host: 8008
+    awx.vm.network "forwarded_port", guest: 27017, host: 27017
+    awx.vm.network "forwarded_port", guest: 5432, host: 5432
     awx.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--ioapic", "on"]
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
