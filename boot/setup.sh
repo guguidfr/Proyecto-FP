@@ -1,5 +1,6 @@
 #!/bin/bash
-apt update && apt -y upgrade
+# apt update && apt -y upgrade
+apt update
 # ---------------------------
 systemctl stop ssh
 cat /home/vagrant/host_key >> /home/vagrant/.ssh/authorized_keys
