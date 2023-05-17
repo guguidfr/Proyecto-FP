@@ -1,4 +1,7 @@
-docker_resources/postgres/*
-docker_resources/nginx/conf
-docker_resources/nginx/logs
-docker_resources/mongo/*
+docker_resources/mongo
+docker_resources/postgres
+volumes/
+.vagrant/
+.config/
+ssh_access/root_ssh_access.pub
+ssh_access/user_ssh_access.pub
