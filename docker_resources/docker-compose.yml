@@ -1,4 +1,5 @@
 version: '3.1'
+
 services:
   nginx:
     image: nginx
@@ -8,8 +9,7 @@ services:
     volumes:
       - /docker_volumes/ngnix/conf/nignx.conf:/etc/ngnix.conf
       - /docker_volumes/ngnix/server:/usr/share/nginx/html
-      # - ./nginx/conf/nginx.conf:/etc/nignx.conf
-      # - ./nginx/server:/usr/share/nginx/html
+
   postgres:
     image: postgres
     restart: always
@@ -19,9 +19,7 @@ services:
       - "5432:5432"
     volumes:
       - /docker_volumes/postgresql/date:/var/lib/postgresql/data
-      # - ./containers_data/postgresql/data:/var/lib/postgresql/data
-      # - /home/vagrant/psql:/var/lib/postgresql/data
-    # user: "1000:1000"
+
   mongo:
     image: mongo:4.4
     restart: always
@@ -32,6 +30,56 @@ services:
       - "27017:27017"
     volumes:
       - /docker_volumes/mongo/data:/data/db
-      # - ./mongo/data:/data/db
-      # - /home/vagrant/mongo:/data/db
-    # user: "1000:1000"
+    networks:
+      my-network:
+        ipv4_address: 172.16.238.10
+    command: bash -c "./mongo-setup.sh"
+
+  prometheus:
+    image: bitnami/prometheus
+    restart: always
+    volumes:
+      - /docker_volumes/prometheus/main:/etc/prometheus
+      - /docker_volumes/prometheus/prometheus-data:/prometheus
+    command:
+      --config.file=/etc/prometheus/prometheus.yml
+      --storage.tsdb.path=/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      my-network:
+        ipv4_address: 172.16.238.20
+    depends_on:
+      - mongo
+
+  exporter:
+    image: percona/mongodb_exporter
+    restart: always
+    environment:
+      MONGODB_URI: mongodb://exporter:exporter-password@172.16.238.10:27017
+    networks:
+      my-network:
+        ipv4_address: 172.16.238.50
+    depends_on:
+      - mongo
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      my-network:
+        ipv4_address: 172.16.238.40
+
+volumes:
+  prometheus-data:
+networks:
+  my-network:
+    ipam:
+      config:
+        - subnet: 172.16.238.0/24
