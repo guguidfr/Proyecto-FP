@@ -1,0 +1,34 @@
+[
+    {
+      "titulo": "Pulp Fiction",
+      "director": "Quentin Tarantino",
+      "anio": 1994,
+      "genero": ["Crimen", "Drama"],
+      "actores": ["John Travolta", "Samuel L. Jackson", "Uma Thurman"],
+      "precio": 9.99
+    },
+    {
+      "titulo": "The Shawshank Redemption",
+      "director": "Frank Darabont",
+      "anio": 1994,
+      "genero": ["Drama"],
+      "actores": ["Tim Robbins", "Morgan Freeman"],
+      "precio": 12.99
+    },
+    {
+      "titulo": "Inception",
+      "director": "Christopher Nolan",
+      "anio": 2010,
+      "genero": ["Acción", "Aventura", "Ciencia ficción"],
+      "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
+      "precio": 14.99
+    },
+    {
+      "titulo": "The Godfather",
+      "director": "Francis Ford Coppola",
+      "anio": 1972,
+      "genero": ["Crimen", "Drama"],
+      "actores": ["Marlon Brando", "Al Pacino", "James Caan"],
+      "precio": 11.99
+    }
+  ]
