@@ -1,5 +1,6 @@
 docker_resources/mongo
 docker_resources/postgres
+docker_resources/grafana
 volumes/
 .vagrant/
 .config/
