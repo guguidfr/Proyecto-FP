@@ -1,6 +1,7 @@
 #!/bin/bash
 # apt update && apt -y upgrade
 apt update
+apt install -y git
 # ---------------------------
 systemctl stop ssh
 mkdir /root/.ssh
