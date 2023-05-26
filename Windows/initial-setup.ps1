@@ -2,7 +2,7 @@
 $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
 if (-not $isAdmin) {
     Write-Host "Este script requiere privilegios de administrador. Ejecute PowerShell como administrador e intente nuevamente."
-    Start-Sleep 5
+    Read-Host "Pulsa ENTER para salir..."
     Exit 1
 }
 
@@ -26,8 +26,8 @@ Write-Host "Instalando VirtualBox..."
 choco install virtualbox -y
 
 # Instalar Vagrant
-Write-Host "Instalando Vagrant..."
-choco install vagrant -y
+# Write-Host "Instalando Vagrant..."
+# choco install vagrant -y
 
 # Instalar Visual Studio Code (VSCode)
 Write-Host "Instalando Visual Studio Code (VSCode)..."
@@ -37,19 +37,10 @@ choco install vscode -y
 Write-Host "Instalando Git..."
 choco install git -y
 
-# Lista de extensiones de VSCode a instalar
-$extensions = @(
-    "bbenoist.vagrant",
-    "marcostazi.VS-code-vagrantfile",
-    "ms-python.python",
-    "oderwat.indent-rainbow"
-)
+# Instalar Python
+Write-Host "Instalando la última versión de Python disponible..."
+choco install python -y
 
-# Instalar extensiones de VSCode
-Write-Host "Instalando extensiones de VSCode..."
-foreach ($extension in $extensions) {
-    Write-Host "Instalando extensión $extension..."
-    code --install-extension $extension
-}
-
-Write-Host "¡La instalación de Chocolatey, VirtualBox, Vagrant, VSCode y las extensiones de VSCode se ha completado exitosamente!"
+Write-Host "El proceso de instalación ha terminado."
+Write-Host "Si ha habido algún problema durante la instalación, vuelve a ejecutar este script."
+Read-Host "Pulsa ENTER para salir..."
