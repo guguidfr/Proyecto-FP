@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+  app:
+    image: guguidfr/python-app:0.1.2
+    restart: always
+    ports:
+    - 3000:3000
+    depends_on:
+    - db
+    networks:
+      network-1:
+        ipv4_address: 172.16.10.10
+
+  db:
+    image: mysql:latest
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: python
+      MYSQL_USER: python
+      MYSQL_PASSWORD: prueba
+    volumes:
+      - ./dummy-data/sql_table.sql:/docker-entrypoint-initdb.d/script.sql
+    networks:
+      network-1:
+        ipv4_address: 172.16.10.20
+
+  insomnia:
+    image: kasmweb/insomnia:1.13.1-rolling
+    restart: always
+    ports:
+    - 6901:6901
+    environment:
+      - VNC_PW=password
+    networks:
+      network-1:
+        ipv4_address: 172.16.10.30
+
+networks:
+  network-1:
+    ipam:
+      config:
+        - subnet: 172.16.10.0/24
