@@ -8,7 +8,7 @@ if (-not $isAdmin) {
 
 # Comprobar si la característica opcional de Windows OpenSSH Client está instalada y desinstalarla si es así
 $openSshFeature = Get-WindowsOptionalFeature -Online -FeatureName "OpenSSH.Client"
-if ($null -ne $openSshFeature ) {
+if ($openSshFeature -ne $null) {
     Write-Host "Desinstalando la característica opcional de Windows OpenSSH Client..."
     Disable-WindowsOptionalFeature -Online -FeatureName "OpenSSH.Client" -NoRestart
 }

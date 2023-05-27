@@ -12,6 +12,9 @@ $downloadUrl = "https://releases.hashicorp.com/vagrant/2.3.6/vagrant_2.3.6_windo
 # Ruta de destino para el archivo ejecutable de Vagrant
 $destinationPath = "$env:TEMP\vagrant_2.3.6_windows_amd64.msi"
 
+Write-Host "La instalación de Vagrant es obligatoria para trabajar en el proyecto."
+Write-Host "Si quieres instalarlo de manera automática con este scriot, debes esperar a que el program reciba los 260.000.00 de bytes (estimados) del paquete de instalación de Vagrant."
+Write-Host "Si quieres continuar con la instalación automática, pulsa ENTER. En caso contrario, pulsa Ctrl+C para detenerlo."
 # Descargar el archivo ejecutable de Vagrant
 Invoke-WebRequest -Uri $downloadUrl -OutFile $destinationPath
 
