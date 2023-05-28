@@ -1,9 +1,3 @@
--- CREATE DATABASE pruebas_python;
-
--- USE pruebas_python;
-
--- CREATE USER 'usu_prueba'@'%' IDENTIFIED BY 'prueba';
-
 DROP TABLE IF EXISTS LIBROS;
 CREATE TABLE LIBROS(
 	id INT AUTO_INCREMENT PRIMARY KEY,

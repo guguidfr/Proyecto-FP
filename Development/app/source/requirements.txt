@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+PyMySQL
+pandas
+requests
+psycopg2
+pymongo
+cryptography

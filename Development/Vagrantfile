@@ -6,7 +6,8 @@ Vagrant.configure("2") do |config|
     host.vm.box = "debian/bullseye64"
     host.vm.hostname = "dockers-server"
     host.vm.synced_folder "./docker_resources", "/containers"
-    host.vm.synced_folder "./templates", "/templates"
+    host.vm.synced_folder "./app", "/home/vagrant/app"
+    # host.vm.synced_folder "./templates", "/templates"
     host.vm.provision "file", source: "./ssh_access/user_ssh_access.pub", destination: "/home/vagrant/ssh_access/user_key"
     host.vm.provision "file", source: "./ssh_access/root_ssh_access.pub", destination: "/home/vagrant/ssh_access/root_key"
     # host.vm.provision "shell", inline: "mkdir -p /docker_volumes/prometheus/main", privileged: true
@@ -27,7 +28,7 @@ Vagrant.configure("2") do |config|
     host.vm.provision "shell", path: "./boot/setup.sh"
     host.vm.provision "shell", path: "./boot/get-docker.sh"
     host.vm.provision "shell", path: "./boot/get-compose.sh", privileged: false
-    #host.vm.provision "shell", path: "./boot/prometheus-config.sh"
+    # host.vm.provision "shell", path: "./boot/prometheus-config.sh"
     # host.vm.provision "shell", path: "./boot/start-containers.sh"
   end
 end

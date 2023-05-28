@@ -1,8 +1,9 @@
-docker_resources/mongo
-docker_resources/postgres
-docker_resources/grafana
-volumes/
-.vagrant/
-.config/
-ssh_access/root_ssh_access.pub
-ssh_access/user_ssh_access.pub
+Development/docker_resources/
+Development/templates/
+Development/ssh_access/root_ssh_access.pub
+Development/ssh_access/user_ssh_access.pub
+Development/.vagrant/
+.vagrant
+Development/app/source/code/__pycache__
+Development/boot/prometheus-config.sh
+Development/boot/start-containers.sh
