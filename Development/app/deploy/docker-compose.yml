@@ -21,6 +21,8 @@ services:
       MYSQL_DATABASE: python
       MYSQL_USER: python
       MYSQL_PASSWORD: prueba
+    depends_on:
+    - dbeaver
     volumes:
       - ./dummy-data/init-mysql.sql:/docker-entrypoint-initdb.d/init-mysql.sql
     networks:
@@ -50,8 +52,13 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: python
+    depends_on:
+    - dbeaver
     volumes:
     - ./dummy-data/init-postgres.sql:/docker-entrypoint-initdb.d/init-postgres.sql
+    networks:
+        network-1:
+          ipv4_address: 172.16.10.40
 
   insomnia:
     image: kasmweb/insomnia:1.13.1-rolling
@@ -64,7 +71,7 @@ services:
     - app
     networks:
       network-1:
-        ipv4_address: 172.16.10.40
+        ipv4_address: 172.16.10.50
 
   express:
     image: mongo-express
@@ -79,7 +86,18 @@ services:
     - mongo
     networks:
       network-1:
-        ipv4_address: 172.16.10.50
+        ipv4_address: 172.16.10.60
+
+  dbveaber:
+    image: dbeaver/cloudbeaver
+    restart: always
+    ports:
+    - 8978:8978
+    depends_on:
+      - postgres
+    networks:
+      network-1:
+        ipv4_address: 172.16.10.70
 
 networks:
   network-1:
