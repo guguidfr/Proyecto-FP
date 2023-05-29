@@ -2,12 +2,14 @@ version: '3.1'
 
 services:
   app:
-    image: guguidfr/python-app:0.1.2
+    image: ${APP_IMAGE_NAME}?${APP_IMAGE_TAG}
     restart: always
     ports:
     - 3000:3000
-    # depends_on:
-    # - mysql
+    depends_on:
+      - ${DB_TYPE}
+    environment:
+      - DB_HOST=${DB_TYPE}
     networks:
       network-1:
         ipv4_address: 172.16.10.10
