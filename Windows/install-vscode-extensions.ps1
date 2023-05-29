@@ -16,4 +16,5 @@ foreach ($extension in $extensions) {
 }
 
 Write-Host "El proceso de instalación ha terminado."
+Write-Host "Si ha habido algún problema durante la instalación, prueba a volver a ejecutar este script."
 Read-Host "Pulsa ENTER para salir..."
