@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Cargar las variables de entorno
-if [ -f .env ]
-then
-    source .env
-else
-    exit 1
-fi
+# if [ -f .env ]
+# then
+#     # source .env
+#     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+# else
+#     exit 1
+# fi
 
 read -p "Introduce the database server you want to use [1.mysql/2.mongodb/3.postgresql]: " db_type
 
@@ -35,7 +36,7 @@ docker images
 
 read -p "Insert the name of the image you want to use: " app_image_name_input
 read -p "Insert the tag of the image yoy want to use: " app_image_tag_input
-docker inspect $image_name:$image_tag > /dev/null 2>&1
+docker inspect $app_image_name_input:$app_image_tag_input > /dev/null 2>&1
 if [ $? -ne 0 ]
 then
 
@@ -50,10 +51,21 @@ else
     echo "APP_IMAGE_NAME=$app_image_name" > .env
     echo "APP_IMAGE_TAG=$app_image_tag" >> .env
 
+    if [ -f .env ]
+    then
+        # source .env
+        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+    else
+        exit 1
+    fi
+
     cd deploy
 
     sed -i "s#image: $APP_IMAGE_NAME:$APP_IMAGE_TAG#image: $app_image_name:$app_image_tag#" docker-compose.yml
 
+    docker-compose up -d app "$db_service"
+
+fi
 
 docker ps
 exit 0
