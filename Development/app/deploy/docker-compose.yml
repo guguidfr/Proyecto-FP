@@ -2,14 +2,14 @@ version: '3.1'
 
 services:
   app:
-    image: ${APP_IMAGE_NAME}?${APP_IMAGE_TAG}
+    image: ${APP_IMAGE_NAME}:${APP_IMAGE_TAG}
     restart: always
     ports:
     - 3000:3000
     depends_on:
-      - ${DB_TYPE}
-    environment:
-      - DB_HOST=${DB_TYPE}
+      - insomnia
+    # environment:
+    #   - DB_HOST=${DB_TYPE}
     networks:
       network-1:
         ipv4_address: 172.16.10.10
@@ -40,6 +40,8 @@ services:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: toor
         MONGO_INITDB_DATABASE: python
+      depends_on:
+        - express
       volumes:
       - ./dummy-data/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
       networks:
@@ -69,8 +71,8 @@ services:
     - 6901:6901
     environment:
       - VNC_PW=password
-    depends_on:
-    - app
+    # depends_on:
+    # - app
     networks:
       network-1:
         ipv4_address: 172.16.10.50
@@ -84,19 +86,19 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: toor
-    depends_on:
-    - mongo
+    # depends_on:
+    # - mongo
     networks:
       network-1:
         ipv4_address: 172.16.10.60
 
-  dbveaber:
+  dbeaver:
     image: dbeaver/cloudbeaver
     restart: always
     ports:
     - 8978:8978
-    depends_on:
-      - postgres
+    # depends_on:
+    #   - postgres
     networks:
       network-1:
         ipv4_address: 172.16.10.70
