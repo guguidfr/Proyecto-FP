@@ -18,10 +18,6 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 Write-Host "Instalando VirtualBox..."
 choco install virtualbox -y
 
-# Instalar Vagrant
-Write-Host "Instalando Vagrant..."
-choco install vagrant -y
-
 # Instalar Visual Studio Code (VSCode)
 Write-Host "Instalando Visual Studio Code (VSCode)..."
 choco install vscode -y
@@ -33,6 +29,14 @@ choco install git -y
 # Instalar Python
 Write-Host "Instalando la última versión de Python disponible..."
 choco install python -y
+
+# # Instalar Insomnia Rest API
+# Write-Host "Instalando Insomnia..."
+# choco install insomnia-rest-api-client -y
+
+# Instalar Vagrant
+Write-Host "Instalando Vagrant..."
+choco install vagrant -y
 
 Write-Host "El proceso de instalación ha terminado."
 Write-Host "Si ha habido algún problema durante la instalación, prueba a volver a ejecutar este script."
