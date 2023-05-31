@@ -1,9 +1,9 @@
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox # Defining the provider. The box used in this Vagrantfile only works with Virtualbox.
   config.ssh.keys_only = true # Allow ssh only with keys
-  config.vm.define "host" do |host| # Defining our VM
+  config.vm.define "host" do |host| # Defining the VM
     host.vm.box = "guguidfr/debian11-project" # Box image
-    host.vm.hostname = "dockers-server" # Host name. You can change this if you want to
+    host.vm.hostname = "dockers-server" # Host name. You are free to change it
     # -----------------------------------------------------------------------------------------
     # This folder is where you put your app code
     host.vm.synced_folder "./app", "/home/vagrant/app"
@@ -14,9 +14,8 @@ Vagrant.configure("2") do |config|
     # host.vm.provision "file", source: "./ssh_access/root_ssh_access.pub", destination: "/home/vagrant/ssh_access/root_key"
     # -----------------------------------------------------------------------------------------
     host.vm.network "forwarded_port", guest: 3000, host: 3000 # API Port: for external testing if needed
-    host.vm.network "forwarded_port", guest: 6901, host: 80 # Insomnia Port: REST API Client
-    host.vm.network "forwarded_port", guest: 8978, host: 81 # DBeaver Port: MySQL and PostgreSQL web client
-    host.vm.network "forwarded_port", guest: 8081, host: 82 # Mongo-Express Port: MongoDB web client
+    host.vm.network "forwarded_port", guest: 8978, host: 8978 # DBeaver Port: MySQL and PostgreSQL web client
+    host.vm.network "forwarded_port", guest: 8081, host: 8081 # Mongo-Express Port: MongoDB web client
     # -----------------------------------------------------------------------------------------
     # Uncomment the line of the desired database server port if you need it.
     # host.vm.network "forwarded_port", guest: 3306, host: 3306 # MySQL Port
@@ -35,6 +34,6 @@ Vagrant.configure("2") do |config|
     # host.vm.provision "shell", path: "./boot/copy-ssh-keys.sh"
     host.vm.provision "shell", path: "./boot/get-docker.sh"
     host.vm.provision "shell", path: "./boot/get-compose.sh", privileged: false
-    host.vm.provision "shell", path: "./boot/config-docker.sh"
+    host.vm.provision "shell", path: "./boot/download-images.sh", privileged: false
   end
 end
