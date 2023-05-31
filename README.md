@@ -1,6 +1,5 @@
-# Proyecto-FP
-Se debe de ejecutar como administrador en PowerShell el siguiente comando:
+# vagrant-docker-environment
+Execute the following command in Powershell as administrator to enable scripts execution:
 ```
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
-Esto hará que se puedan ejecutar los scripts de instalación necesarios.
