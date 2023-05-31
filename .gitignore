@@ -6,5 +6,6 @@ Development/.vagrant/
 Development/app/source/code/__pycache__
 Development/boot/prometheus-config.sh
 Development/boot/start-containers.sh
+Development/app/.env
 Windows/install-vagrant.ps1
 .vagrant
