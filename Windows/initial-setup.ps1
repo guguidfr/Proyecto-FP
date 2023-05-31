@@ -6,7 +6,7 @@ if (-not $isAdmin) {
     Exit 1
 }
 
-# Instalar Chocolatey
+# Install Chocolatey
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Write-Host "Installing Chocolatey..."
     Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -14,27 +14,31 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Set-ExecutionPolicy Restricted -Scope Process -Force
 }
 
-# Instalar VirtualBox
+# Install VirtualBox
 Write-Host "Installing VirtualBox..."
 choco install virtualbox -y
 
-# Instalar Visual Studio Code (VSCode)
+# Install Visual Studio Code (VSCode)
 Write-Host "Installing Visual Studio Code (VSCode)..."
 choco install vscode -y
 
-# Instalar Git
+# Install Git
 Write-Host "Installing Git..."
 choco install git -y
 
-# Instalar Python
+# Install Python
 Write-Host "Installing the latest Python version available..."
 choco install python -y
 
-# Instalar Putty y PuttyGen
+# Install Putty & PuttyGen
 Write-Host "Installing Putty..."
 choco install putty.install -y
 
-# Instalar Vagrant
+# Install Insomnia
+Write-Host "Installing Insomnia..."
+choco install insomnia-rest-api-client -y
+
+# Install Vagrant
 Write-Host "Installing Vagrant..."
 choco install vagrant -y
 
