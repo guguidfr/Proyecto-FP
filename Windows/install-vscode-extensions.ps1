@@ -1,5 +1,5 @@
-Write-Host "Se instalarán las extensiones de VSCode recomendadas para el entorno de desarrollo."
-Read-Host "Pulsa ENTER para continuar..."
+Write-Host "The recommended VSCode extensions will be installed."
+Read-Host "Press ENTER to continue..."
 # Lista de extensiones de VSCode a instalar
 $extensions = @(
     "bbenoist.vagrant",
@@ -9,12 +9,12 @@ $extensions = @(
 )
 
 # Instalar extensiones de VSCode
-Write-Host "Instalando extensiones de VSCode..."
+Write-Host "Installing extensions..."
 foreach ($extension in $extensions) {
-    Write-Host "Instalando extensión $extension..."
+    Write-Host "Installing: $extension..."
     code --install-extension $extension
 }
 
-Write-Host "El proceso de instalación ha terminado."
-Write-Host "Si ha habido algún problema durante la instalación, prueba a volver a ejecutar este script."
-Read-Host "Pulsa ENTER para salir..."
+Write-Host "The installation process endend."
+Write-Host "In case of an error during the process, try executing this script again."
+Read-Host "Press ENTER to exit..."

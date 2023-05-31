@@ -1,6 +1,6 @@
 @echo off
-echo "Este .bat file desinstala el cliente de OpenSSH de Windows."
-echo "Si quieres continuar, pula ENTER, en caso contrario usa Ctrl+C."
-rem Recuerda que si no desinstalas OpenSSH, necesitarás pasar tu clave pública a la máquina virtual de Vagrant.
+echo "This .bat file uninstalls the OpenSSH Client of Windows."
+echo "If you want to proceed, press ENTER; use Ctrl+C to exit this script."
+rem Remember that if you don't remove OpenSSH, you will need to pass your ssh public key to the Vagrant VM.
 pause >nul
 dism /online /Remove-Capability /CapabilityName:OpenSSH.Client~~~~0.0.1.0

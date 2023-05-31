@@ -1,8 +1,8 @@
 # Comprobar si el usuario tiene privilegios de administrador
 $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
 if (-not $isAdmin) {
-    Write-Host "Este script requiere privilegios de administrador. Ejecute PowerShell como administrador e intente nuevamente."
-    Read-Host "Pulsa ENTER para salir..."
+    Write-Host "This script needs to be executed with administrator privileges."
+    Read-Host "Press ENTER to exit..."
     Exit 1
 }
 
@@ -20,7 +20,8 @@ Start-Process -FilePath "python" -ArgumentList $destinationPath -Wait
 
 # Comprobar la versión instalada de pip
 $pipVersion = pip --version
-Write-Host "Versión de pip instalada: $pipVersion"
-Write-Host "El proceso de instalación ha terminado."
-Write-Host "Si ha habido algún problema durante la instalación, prueba a volver a ejecutar este script."
-Read-Host "Pulsa ENTER para salir..."
+Write-Host "Installed pip version: $pipVersion"
+Write-Host "The installation process endend."
+Write-Host "In case of an error during the process, try executing this script again."
+Read-Host "Press ENTER to exit..."
+

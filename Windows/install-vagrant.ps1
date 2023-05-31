@@ -13,7 +13,7 @@ $downloadUrl = "https://releases.hashicorp.com/vagrant/2.3.6/vagrant_2.3.6_windo
 $destinationPath = "$env:TEMP\vagrant_2.3.6_windows_amd64.msi"
 
 Write-Host "La instalación de Vagrant es obligatoria para trabajar en el proyecto."
-Write-Host "Si quieres instalarlo de manera automática con este scriot, debes esperar a que el program reciba los 260.000.00 de bytes (estimados) del paquete de instalación de Vagrant."
+Write-Host "Si quieres instalarlo de manera automática con este scriot, debes esperar a que el program reciba los 260.000.000 de bytes (estimados) del paquete de instalación de Vagrant."
 Read-Host "Si quieres continuar con la instalación automática, pulsa ENTER. En caso contrario, pulsa Ctrl+C para detenerlo."
 # Descargar el archivo ejecutable de Vagrant
 Invoke-WebRequest -Uri $downloadUrl -OutFile $destinationPath
@@ -24,6 +24,7 @@ Start-Process -FilePath $destinationPath -ArgumentList "/S" -Wait
 # Comprobar la versión instalada de Vagrant
 $vagrantVersion = vagrant --version
 Write-Host "Versión de Vagrant instalada: $vagrantVersion"
-Write-Host "El proceso de instalación ha terminado."
-Write-Host "Si ha habido algún problema durante la instalación, prueba a volver a ejecutar este script."
-Read-Host "Pulsa ENTER para salir..."
+Write-Host "The installation process endend."
+Write-Host "In case of an error during the process, try executing this script again."
+Read-Host "Press ENTER to exit..."
+
