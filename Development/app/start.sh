@@ -1,30 +1,15 @@
 #!/bin/bash
 
-# Cargar las variables de entorno
-# if [ -f .env ]
-# then
-#     # source .env
-#     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
-# else
-#     exit 1
-# fi
-
 read -p "Introduce the database server you want to use [1.mysql/2.mongodb/3.postgresql]: " db_type
 
 if [ $db_type == "1" ]
 then
-    # cd deploy
-    # docker-compose up -d app mysql
     db_service="mysql"
 elif [ $db_type == "2" ]
 then
-    # cd deploy
-    # docker-compose up -d app mongo
     db_service="mongo"
 elif [ $db_type == "3" ]
 then
-    # cd deploy
-    # docker-compose up -d app postgres
     db_service="postgres"
 else
     echo "Invalid input"
@@ -50,10 +35,10 @@ else
 
     echo "APP_IMAGE_NAME=$app_image_name" > .env
     echo "APP_IMAGE_TAG=$app_image_tag" >> .env
+    echo "DB_SERVICE=$db_service" >> .env
 
     if [ -f .env ]
     then
-        # source .env
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
     else
         exit 1

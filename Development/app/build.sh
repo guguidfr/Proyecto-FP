@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Obtener la ubicación del script actual
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Navegar al directorio del Dockerfile
