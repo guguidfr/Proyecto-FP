@@ -1,18 +1,8 @@
 import pymysql
-# import mariadb # Puedes cambiar PyMySQL por MariaDB. Debes reemplazar todas las coincidencias de "pymysql" por las de "mariadb". Todo debería de ir exactamente igual tras cambiarlo.
 import pandas as pd
 import sys
 import os
 
-# # Obtener el valor de la variable de entorno
-# db_host = os.environ.get("DB_HOST")
-
-# try:
-#     # Intentar la conexión utilizando el valor de la variable de entorno
-#     conn = pymysql.connect(host=db_host, user="python", password="prueba", database="python")
-# except:
-#     # Si no es posible, se cierra el programa
-#     sys.exit(1)
 
 try: # Intentar la conexión
     conn = pymysql.connect(host="mysql", user="python", password="prueba", database="python")
