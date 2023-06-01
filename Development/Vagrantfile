@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     # host.vm.provision "file", source: "./ssh_access/user_ssh_access.pub", destination: "/home/vagrant/ssh_access/user_key"
     # host.vm.provision "file", source: "./ssh_access/root_ssh_access.pub", destination: "/home/vagrant/ssh_access/root_key"
     # -----------------------------------------------------------------------------------------
-    host.vm.network "forwarded_port", guest: 3000, host: 3000 # API Port: for external testing if needed
+    host.vm.network "forwarded_port", guest: 3000, host: 3000 # API Port: for external testing with Insomnia
     host.vm.network "forwarded_port", guest: 8978, host: 8978 # DBeaver Port: MySQL and PostgreSQL web client
     host.vm.network "forwarded_port", guest: 8081, host: 8081 # Mongo-Express Port: MongoDB web client
     # -----------------------------------------------------------------------------------------
