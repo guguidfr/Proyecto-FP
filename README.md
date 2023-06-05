@@ -93,7 +93,7 @@ You are free to use the VM to whatever you want, but the tools are in the `app` 
 
 Once all the containers are running, you can access the API documentation on `localhost:3000/docs`, the MySQL and PostgreSQL web client on `localhost:8978` and the MongoDB web client on `localhost:8081`.
 
-The configuration to connecto to the databases is pretty easy and straight forward.
+The configuration to connect to the databases is pretty easy and straight forward.
 
 ### Other useful `docker` commands are:
 
