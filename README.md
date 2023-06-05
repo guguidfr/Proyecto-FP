@@ -69,7 +69,7 @@ Once everything needed is installed, you can proceed with the VM creation.
 
 ---
 
-From the "Terminal" app, Powershell or the integrated terminal in VSCode, go to the `Development` folder and execute the command `vagrant up --provision` to download the Vagrant Box to start the provisioning; you can edit the VM resources making changes in the Vagrantfile, but that will be explained later.
+From the "Terminal" app, Powershell or the integrated terminal in VSCode, go to the `Development` folder and execute the command `vagrant up --provision` to download the Vagrant Box and start the provisioning; you can edit the VM resources making changes in the Vagrantfile, but that will be explained later.
 
 Once the VM has booted up and is ready for ssh, execute the command `vagrant ssh` in the same directory as the Vagrantfile to acces the VM. Being a Debian 11 Vagrant box, the default user is `vagrant`, and in case you need the password, is `vagrant` too; but don't worry about it, the default user has `sudo` permissions without password.
 
