@@ -62,16 +62,6 @@ services:
         network-1:
           ipv4_address: 172.16.10.40
 
-  insomnia:
-    image: kasmweb/insomnia:1.13.1-rolling
-    restart: always
-    ports:
-    - 6901:6901
-    environment:
-      - VNC_PW=password
-    networks:
-      network-1:
-        ipv4_address: 172.16.10.50
 
   express:
     image: mongo-express
