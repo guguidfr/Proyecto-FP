@@ -14,6 +14,9 @@ then
     elif [[ $selection == "N" || $selection == "n" ]]
     then
         echo "..."
+    else
+    echo "Invalid option"
+    exit 1
     fi
 
 elif [[ $option == "N" || $option == "N" ]]

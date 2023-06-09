@@ -1,8 +1,5 @@
 #!/bin/bash
-script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-
-# Navegar al directorio del Dockerfile
-cd "$script_dir/source"
+cd "source"
 
 # Solicitar al usuario que ingrese el nombre de la imagen
 read -p "Enter the image name: " image_name
