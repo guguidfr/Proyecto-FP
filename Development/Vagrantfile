@@ -25,15 +25,15 @@ Vagrant.configure("2") do |config|
     host.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--ioapic", "on"] # Enables IOAPIC for better performance
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"] # Using NAT adapter for Domain Name Resolution
-      v.customize ["modifyvm", :id, "--name", "dockers-server"] # Stablish the VM name
-      v.customize ["modifyvm", :id, "--memory", 6144] # Define the amout of RAM (in MB)
-      v.customize ["modifyvm", :id, "--cpus", 6] # Define the amout of CPU cores
+      v.customize ["modifyvm", :id, "--name", "dockers-server"] # Establish the VM name
+      v.customize ["modifyvm", :id, "--memory", 6144] # Define the amount of RAM (in MB)
+      v.customize ["modifyvm", :id, "--cpus", 6] # Define the amount of CPU cores
     end
     host.vm.provision "shell", inline: "apt update && apt upgrade -y"
-    # Uncomment this line if you are using your own ssh kys
+    # Uncomment this line if you are using your own ssh keys
     # host.vm.provision "shell", path: "./boot/copy-ssh-keys.sh"
     host.vm.provision "shell", path: "./boot/get-docker.sh"
     host.vm.provision "shell", path: "./boot/get-compose.sh", privileged: false
-    host.vm.provision "shell", path: "./boot/download-images.sh", privileged: false
+    # host.vm.provision "shell", path: "./boot/download-images.sh", privileged: false
   end
 end
