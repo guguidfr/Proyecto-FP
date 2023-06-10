@@ -42,7 +42,7 @@ choco install insomnia-rest-api-client -y
 Write-Host "Installing Vagrant..."
 choco install vagrant -y
 
-Write-Host "The installation process endend."
+Write-Host "The installation process ended."
 Write-Host "In case of an error during the process, try executing this script again."
 # -----------------------------------------------------------------------
 Write-Host "Windows needs to restart to apply changes."
