@@ -3,6 +3,7 @@ Vagrant.configure("2") do |config|
   config.ssh.keys_only = true # Allow ssh only with keys
   config.vm.define "host" do |host| # Defining the VM
     host.vm.box = "guguidfr/debian11-project" # Box image
+    host.vm.box_version = "1.1"
     host.vm.hostname = "dockers-server" # Host name. You are free to change it
     # -----------------------------------------------------------------------------------------
     # This folder is where you put your app code
