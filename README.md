@@ -107,19 +107,19 @@ The configuration to connect to the databases is pretty easy and straight forwar
 
 ### Vagrantfile modifications
 
-- Line 6 *(`host.vm.hostname = "dockers-server"`)*: change the hostname of the vm. Change it to whatever you want.
+- Line 7 *(`host.vm.hostname = "dockers-server"`)*: change the hostname of the vm. Change it to whatever you want.
 
-- Lines 13 & 14 *(`host.vm.provision "file", source:[...], destination: [...]`)*: in this case, to copy the public keys you have previously generated with PuTTY. Read the `README.md` in the `Development/ssh_access` to know more about it.
+- Lines 14 & 15 *(`host.vm.provision "file", source:[...], destination: [...]`)*: in this case, to copy the public keys you have previously generated with PuTTY. Read the `README.md` in the `Development/ssh_access` to know more about it.
 
-- Lines 21, 22 & 23 *(`host.vm.network "forwarded_port"`)*: port mapping for the database servers. Uncomment the lines depending on the database you want to acces from outside the VM, like using MySQL Workbench or pgAdmin.
+- Lines 22, 23 & 24 *(`host.vm.network "forwarded_port"`)*: port mapping for the database servers. Uncomment the lines depending on the database you want to acces from outside the VM, like using MySQL Workbench or pgAdmin.
 
-- Line 28 *(`"modifyvm", :id, "--name", "dockers-server"`)*: set a name for the VM in Virtualbox.
+- Line 29 *(`"modifyvm", :id, "--name", "dockers-server"`)*: set a name for the VM in Virtualbox.
 
-- Line 29 *(`"modifyvm", :id, "--memory", 6144`)*: define the amount of RAM memory for the VM in MB. The box's default is 4 GB, and 6 in the Vagranfile. You can change it to whatever you want, depending on your host machine hardware.
+- Line 30 *(`"modifyvm", :id, "--memory", 6144`)*: define the amount of RAM memory for the VM in MB. The box's default is 4 GB, and 6 in the Vagranfile. You can change it to whatever you want, depending on your host machine hardware.
 
-- Line 30 *(`"modifyvm", :id, "--cpus", 6`)*: define the number of CPU cores for the VM. The box's default is 4 cores, and 6 in the Vagrantfile. You can change it to whatever you want
+- Line 31 *(`"modifyvm", :id, "--cpus", 6`)*: define the number of CPU cores for the VM. The box's default is 4 cores, and 6 in the Vagrantfile. You can change it to whatever you want
 
-- Line 34 *(`host.vm.provision "shell"`)*: a script to copy the ssh publi keys. Uncomment this line if you uncommented the lines 13 & 14.
+- Line 35 *(`host.vm.provision "shell"`)*: a script to copy the ssh publi keys. Uncomment this line if you uncommented the lines 14 & 15.
 
 ---
 
