@@ -5,7 +5,8 @@ $extensions = @(
     "bbenoist.vagrant",
     "marcostazi.VS-code-vagrantfile",
     "ms-python.python",
-    "oderwat.indent-rainbow"
+    "oderwat.indent-rainbow",
+    "timonwong.shellcheck"
 )
 
 # Instalar extensiones de VSCode
